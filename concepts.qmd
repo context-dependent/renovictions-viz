@@ -1,0 +1,122 @@
+# Thematic Inspiration for Presentation Walkthrough
+
+## My Favourite Youtubes
+
+All my fave YTers (philosophy tube, folding ideas, hbomberguy)
+structure their videos around 'levels', 
+and also (IMO) communicate their points quite nicely to a broad audience. 
+Obviously there is more to their effectiveness than the format, 
+but I think applying it to the task of introducing a broad audience of 'printers to spatial viz 
+will improve both the presentation and my understanding of the structure more generally. 
+
+### Level 0: premise
+
+This serves as the introduction to the video. It's not formally denoted with a level, but it too feels like a common structural element, so I've labelled it Level 0 here. 
+It tells the viewer what it's about, who it's for, why it's important, and where the YTer is coming from with the following formula: 
+- establish and motivate the _initial_ central question of the essay: "today, I'm going to be talking about A because (usually because it's in the news or centralizing the discourse)"
+- position the 'reviewer' to address the topic or question, acknowledging but innoculating the limitations of their own perspective: "I may not be an r/stonks Ape, but I've spent M hours reading through J posts"
+- address its target audience, but welcome incidental viewers, flagging (usually with a joke) what may be confusing or unexpected for them: "if you're watching this video, you're probably X, Y, Z, but even if you're not (insert affectionate deprecation of in-group), stick around and you might learn something", 
+
+### Level 1: the big question
+
+Level 1 works backward from the premise to highlight and emphasize the individuals and 'big ideas' that are central to the vid's thesis. 
+We go from "the thing" in level 0 to "the ideas behind the thing" in level 1. 
+In @PT's excellent video about the NHS, she does this by zooming out from her own personal experience (the primary text, I guess) of the NHS' ongoing collapse to the question of 'why do institutions fail?' more broadly. 
+L1 often ends with the soft-reveal of "the real question". 
+Maybe that's more what its about, the question behind the question. 
+I guess we can look at L1 as finding the correspondence between the questions floated in L0 and the more abstract issues around which there have developed systems of thought. 
+
+### Level 2 to $N-2$: background
+
+Before we answer the big question, we need to establish a common ground. 
+Levels 2 through $N-2$ each identify and answer a subordinate question to the big one, generally by introducing some supertextual element like a key character, a school of thought, an expert who has dealt with the issue nicely. In the @PT NHS video, uses Sara Ahmed's book Complaint! to generalize about why and how complaints are managed in institutions, and then uses Stafford Beer's Management Cybernetics to generalize further about the systemic motivations that emerge within institutional settings. 
+This works because it gives the viewer necessary details without cluttering the top-level big question.
+It also gives the YTer an opportunity to bring their own analysis to bear on the subtopic at hand, adding important nuance and caveats. (@PT's how cops make the law makes heavy use of a cop's book about the problems in british policing, but takes care to critique the cop's claims)
+
+### Level $N-1$: putting it all together
+
+Now that we've built the building blocks, we can stack them up high enough to reach the 'big question'. 
+This level reminds us of the gold star, glues together the building blocks, and climbs to the top of the stack. 
+
+### Level $N$: the payoff
+
+With the answer in hand, we return to the original motivation. 
+How does having the answer change things? 
+It could represent an interpretive shift -- as in @FI's This is Financial Advice -- where we come away more skeptical of credulous financial reporting by the mainstream press. 
+It could be a call to action, as in the NHS vid, which ends by asking viewers to get animated about institutional failure. 
+
+## As a Dataviz Presentation
+
+### Level 0
+
+- Hello and welcome! 
+- I'm here -- at the request of Lexie and Ulisses -- to talk about one of my favourite kinds of data visualization: maps (or geospatial data visualization) 
+- Since you're here, I'm guessing that you are interested in either designing or directly creating maps for reports or presentations, but even if you're not, I think you'll come away with something useful.
+- I'm the person who's talking right now because, in my time at Blueprint, 
+I've designed and created many data maps (e.g. winnipeg, ymca). 
+Though I'm by no means a geographer, I've spent many days fumbling around and stubbing my toes in the somewhat _poorly lit_ domain of data mapping. 
+By sharing some of what I've learned, I'm hoping you won't have to do (as much of) that yourselves. 
+- There are lots of ways to actually generate a map visualization, of which I'm only familiar with a small subset. 
+So, I'm going to focus this presentation on the universal parts of the process: designing the visualization, assembling the input data, and integrating it with other insights. (that said, I'm always thrilled to offer detailed advice offline) 
+
+### Level 1: Lost at sea
+
+- Why make a map? 
+  + "Location, location, location!" A person's physical location plays an obvious role in shaping their experience. 
+    At the very least, it determines the services and amenities they can access, 
+    along with the policy under which they are governed. 
+    For many, it also reflects a choice made on the basis of their identities, desires, and expectations.
+    Data maps let us observe and communicate the resulting spatial patterns, which often cannot be accessed any other way. 
+  + "Solid footing" For most of us, maps (or globes) are the first kind of data visualization that we see and understand. 
+    Where most charts require painstaking explanation of the method by which they translate information to image, 
+    maps can depend on a common understanding of what they represent. 
+    Data maps can give a wide range of readers new information in a format they already intuitively understand. 
+  + "You eat with your eyes first" Information is easier to consume when it _looks_ interesting. 
+    Even without representing any additional data, a map is (IMO) interesting and pleasant to behold. 
+    Using a map as the basis of a chart gives you a head start on designing a compelling visual object. 
+- What will I need? 
+  + Shapes (e.g. polygons, lines, points) that represent the area you're interested in. 
+    This could be a country, a province, a city, a neighbourhood, a street, or even a building. 
+    You can get these from a variety of sources, including open data portals, 
+    government websites, and even google maps.
+  + Numbers that represent the data you want to visualize, along with information that will let you match them to the shapes. 
+    This could be a list of postal codes, a list of addresses, or a list of latitude/longitude coordinates. 
+    You can get these from a variety of sources, including open data portals, 
+    government websites, and even google maps.
+  + A tool (or set of tools) to generate a map visualization. There are lots of options. Personally, I like using the R package `sf` for the data wrangling, and `ggplot2` or `leaflet` for producing visualizations.
+    Other free options include QGIS and Tableau, though I have always struggled to get them to do what i want. 
+
+### Level 2: Here be dragons
+
+- Information Overload
+  + Maps encode so much information on their own that you as the designer of a visualization have a _very_ small window of bandwidth with which to represent the information you're trying to visualize. 
+  + Without a careful plan for using that bandwidth, maps can quickly become meaningless. 
+  + Data maps also must take care to avoid simply representing the geographic population distribution of the region they cover. 
+- What shape is the earth?
+  + If you guessed sphere, you're... wrong! <insert joke about flat earth> just kidding, you're wrong, but you're close. It's an oblate sphereoid, which is a sphere that's been squished a bit. 
+  + The problem is that maps, by definition, are flat, and that spheres don't... unfold very well. 
+    This means that any map that represents the earth's surface will have to distort it in some way. 
+    The question is, how do we want to distort it?
+    Different projections have different advantages and disadvantages, so spatial data from different sources may be in different projections. 
+  + The moral of the story is that, when you're trying to combine two spatial data sets, you need to ensure that they have the same idea about the shape of the earth.  
+- What is a place?
+  + Beyond choosing a shape for the earth, we also have to choose a shape for... the shapes we're representing. 
+  + StatCan hosts boundary files for the whole of Canada for classification schemes drawn from the SGC.
+- Fussy Fussy
+  + Spatial computation is hard, and spatial data can be quite large, so doing operations on spatial data can sometimes be exhausting -- either for your computer or your patience. 
+  + To complicate things further, it's also quite specific, so it can produce difficult to debug errors. 
+    
+### Level 3: Your sword, my liege(s)
+
+- patience is critical in both the design and implementation of spatial visualization
+- take care to thoughtfully simplify or _compress_ the data your visualization represents
+- use data maps as a jumping off point, supplementing them with more flexible visualizations when you get to making a detailed point. 
+
+## Reflections
+
+This worked really well! 
+I fit all of the content I was hoping to cover in, and the questions and engagement evinced gratitude. 
+Not only did folks like the renovictions map, some also said it was really nice to see my personal workflow, which was cool. 
+Overall, this points to the upside of investing in presentations upfront, and the potential utility of this kind of framework. 
+And now I finally have a nerdfont working!!
+
